@@ -1,38 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "throwabletorch",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Throwable Torch",
+  "description": "Always wished you had some way to light up that dark ledge above you? Now, with a few slimeballs (or some clay) you too can create a throwable torch. ",
   "authors": [
-    "Me!"
+    "Daniking"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/members/danik1ngrd/projects",
+    "sources": "https://github.com/DanikingRD/ThrowableTorch"
   },
-
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
-
+  "license": "MIT",
+  "icon": "assets/throwabletorch/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.daniking.throwabletorch.ThrowableTorch"
+    ],
+    "client": [
+      "com.daniking.throwabletorch.ClientSetup"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
-
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
     "minecraft": "1.18.x",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }

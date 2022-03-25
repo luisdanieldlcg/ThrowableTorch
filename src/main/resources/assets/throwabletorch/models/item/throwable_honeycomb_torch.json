@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "throwabletorch:items/throwable_honeycomb_torch"
+  }
+}
