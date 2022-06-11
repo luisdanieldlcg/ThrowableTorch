@@ -20,7 +20,10 @@
       "com.daniking.throwabletorch.ThrowableTorch"
     ],
     "client": [
-      "com.daniking.throwabletorch.ClientSetup"
+      "com.daniking.throwabletorch.client.ClientSetup"
+    ],
+    "dynamiclights": [
+      "com.daniking.throwabletorch.integration.ThrowableTorchDynLightsInitializer"
     ]
   },
   "depends": {

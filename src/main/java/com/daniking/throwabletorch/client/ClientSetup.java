@@ -1,5 +1,6 @@
-package com.daniking.throwabletorch;
+package com.daniking.throwabletorch.client;
 
+import com.daniking.throwabletorch.ObjectRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
