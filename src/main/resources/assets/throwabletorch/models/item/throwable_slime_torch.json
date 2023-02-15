@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "throwabletorch:items/throwable_slime_torch"
+    "layer0": "throwabletorch:item/throwable_slime_torch"
   }
 }

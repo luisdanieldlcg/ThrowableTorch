@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "throwabletorch:items/throwable_clay_torch"
+    "layer0": "throwabletorch:item/throwable_clay_torch"
   }
 }
