@@ -11,8 +11,8 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -86,7 +86,7 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
-        entityHitResult.getEntity().damage(DamageSource.thrownProjectile(this, this.getOwner()), 1.0F);
+        entityHitResult.getEntity().damage(world.getDamageSources().thrown(this, this.getOwner()), 1.0F);
         if (getStack().isOf(ObjectRegistry.THROWABLE_MAGMA_TORCH_ITEM)) {
             if (!entityHitResult.getEntity().isFireImmune()) {
                 entityHitResult.getEntity().setOnFireFor(5);
