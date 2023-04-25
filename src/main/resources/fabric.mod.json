@@ -23,13 +23,13 @@
       "com.daniking.throwabletorch.client.ClientSetup"
     ],
     "dynamiclights": [
-      "com.daniking.throwabletorch.integration.ThrowableTorchDynLightsInitializer"
+      "com.daniking.throwabletorch.client.integration.ThrowableTorchDynLightsInitializer"
     ]
   },
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.19.x",
+    "minecraft": ">=1.19.3",
     "java": ">=17"
   }
 }
