@@ -44,6 +44,7 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
+        var world = this.getWorld();
         super.onBlockHit(blockHitResult);
         if (!world.isClient()) {
             final Direction dir = blockHitResult.getSide();
@@ -86,7 +87,7 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
-        entityHitResult.getEntity().damage(world.getDamageSources().thrown(this, this.getOwner()), 1.0F);
+        entityHitResult.getEntity().damage(getWorld().getDamageSources().thrown(this, this.getOwner()), 1.0F);
         if (getStack().isOf(ObjectRegistry.THROWABLE_MAGMA_TORCH_ITEM)) {
             if (!entityHitResult.getEntity().isFireImmune()) {
                 entityHitResult.getEntity().setOnFireFor(5);
@@ -96,6 +97,6 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
     }
 
     private void drop() {
-        world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(Items.TORCH)));
+        getWorld().spawnEntity(new ItemEntity(getWorld(), getX(), getY(), getZ(), new ItemStack(Items.TORCH)));
     }
 }
