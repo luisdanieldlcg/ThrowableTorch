@@ -6,13 +6,11 @@ import net.minecraft.block.WallTorchBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -22,24 +20,18 @@ import net.minecraft.world.World;
 
 public class ThrowableTorchEntity extends ThrownItemEntity {
 
-
     public ThrowableTorchEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
-
     }
 
-    public ThrowableTorchEntity(EntityType<? extends ThrownItemEntity> entityType, LivingEntity livingEntity, World world) {
-        super(entityType, livingEntity, world);
-    }
-
-    @Override
-    public Packet<ClientPlayPacketListener> createSpawnPacket() {
-        return super.createSpawnPacket();
+    public ThrowableTorchEntity(EntityType<? extends ThrownItemEntity> type, LivingEntity owner, World world, ItemStack stack) {
+        super(type, owner, world, stack);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return null;
+        // Hardcode anything here, otherwise it will crash and the entity will not spawn
+        return ObjectRegistry.THROWABLE_CLAY_TORCH_ITEM;
     }
 
     @Override
@@ -87,7 +79,8 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
-        entityHitResult.getEntity().damage(getWorld().getDamageSources().thrown(this, this.getOwner()), 1.0F);
+        var entity = entityHitResult.getEntity();
+        entity.damage((ServerWorld) getWorld(), getWorld().getDamageSources().inFire(), 1.0F);
         if (getStack().isOf(ObjectRegistry.THROWABLE_MAGMA_TORCH_ITEM)) {
             if (!entityHitResult.getEntity().isFireImmune()) {
                 entityHitResult.getEntity().setOnFireFor(5);
