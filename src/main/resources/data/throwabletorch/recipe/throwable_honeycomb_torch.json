@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T",
+    "H"
+  ],
+  "key": {
+    "T": "minecraft:torch",
+    "H": "minecraft:honeycomb"
+  },
+  "result": {
+    "id": "throwabletorch:throwable_honeycomb_torch",
+    "count": 1
+  }
+}

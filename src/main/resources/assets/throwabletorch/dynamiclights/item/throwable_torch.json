@@ -1,0 +1,12 @@
+{
+  "match": {
+    "items": [
+      "throwabletorch:throwable_slime_torch",
+      "throwabletorch:throwable_clay_torch",
+      "throwabletorch:throwable_magma_torch",
+      "throwabletorch:throwable_honeycomb_torch"
+    ]
+  },
+  "luminance": 14,
+  "water_sensitive": true
+}

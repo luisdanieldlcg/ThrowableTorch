@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "S"
+  ],
+  "key": {
+    "#": "minecraft:torch",
+    "S": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "throwabletorch:throwable_clay_torch",
+    "count": 1
+  }
+}

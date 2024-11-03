@@ -48,28 +48,25 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
                         if (torch.canPlaceAt(world, sidePos)) {
                             world.setBlockState(sidePos, torch);
                         } else {
-                            onFailed();
+                            spawnTorch();
                         }
                     }
-                    case DOWN -> onFailed();
+                    case DOWN -> spawnTorch();
                     default -> {
                         final BlockState state = Blocks.WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, dir);
                         if (state.canPlaceAt(world, sidePos)) {
                             world.setBlockState(sidePos, state);
                         } else {
-                            onFailed();
+                            spawnTorch();
                         }
                     }
                 }
             } else {
-                onFailed();
+                spawnTorch();
             }
         }
     }
 
-    void onFailed() {
-        drop();
-    }
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
@@ -86,10 +83,10 @@ public class ThrowableTorchEntity extends ThrownItemEntity {
                 entityHitResult.getEntity().setOnFireFor(5);
             }
         }
-        onFailed();
+        spawnTorch();
     }
 
-    private void drop() {
+    private void spawnTorch() {
         getWorld().spawnEntity(new ItemEntity(getWorld(), getX(), getY(), getZ(), new ItemStack(Items.TORCH)));
     }
 }
